@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-image: url("https://img.freepik.com/free-vector/dark-black-background-design-with-stripes_1017-38064.jpg?semt=ais_hybrid&w=740");
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            font-family: sans-serif, Arial, Helvetica;
+        }
+        
+        .panel {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 3vh;
+            gap: 40vh;
+        }
+        
+        .left span {
+            font-size: xx-large;
+        }
+        
+        .left #firstpart {
+            color: red;
+        }
+        
+        .right ul {
+            display: flex;
+            flex-direction: row;
+            gap: 8vh;
+        }
+        
+        .right ul li {
+            list-style: none;
+            cursor: pointer;
+        }
+        
+        .right ul li a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+        
+        .right ul li a::after {
+            content: '';
+            width: 0;
+            height: 0.25vh;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -1.3vh;
+            transition: 0.3s;
+        }
+        
+        .right ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .home {
+            display: flex;
+        }
+        
+        .home .leftside {
+            width: 50%;
+            margin-top: 30vh;
+            margin-left: 10vh;
+            font-size: 6vh;
+        }
+        
+        .leftside #name {
+            color: red;
+        }
+        
+        .home .rightside {
+            width: 50%;
+            margin-top: 3vh;
+        }
+        
+        .rightside img {
+            width: 80vh;
+            height: 80vh;
+        }
+        
+        .aboutme {
+            margin-top: 20vh;
+            display: flex;
+            gap: 10vh;
+            margin-right: 8vh;
+            height: 80vh;
+        }
+        
+        .aboutme .mine {
+            margin-left: 10vh;
+        }
+        
+        .mine img {
+            border-radius: 50%;
+            width: 70vh;
+            height: 70vh;
+        }
+        
+        .details_aboutme h1 {
+            font-size: 6vh;
+        }
+        
+        .firstline_aboutme {
+            margin-top: 4vh;
+        }
+        
+        .firstline_aboutme p {
+            font-size: 2.3vh;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        .lists_aboutme ul {
+            margin-top: 3vh;
+            display: flex;
+            gap: 10vh;
+        }
+        
+        .lists_aboutme ul li {
+            list-style: none;
+            font-size: large;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .lists_aboutme ul li::after {
+            content: '';
+            width: 0;
+            height: 0.25vh;
+            position: absolute;
+            background: #ff004f;
+            left: 0;
+            bottom: -1.3vh;
+            transition: 0.3s;
+        }
+        
+        .lists_aboutme ul li:hover::after {
+            width: 100%;
+        }
+        
+        .det_list_aboutme {
+            margin-top: 4vh;
+        }
+        
+        .works {
+            margin-top: 20vh;
+            margin-left: 10vh;
+            margin-right: 10vh;
+        }
+        
+        .heading {
+            font-size: x-large;
+        }
+        
+        .worklist {
+            margin-top: 8vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20vh, 1fr));
+            grid-gap: 4vh;
+        }
+        
+        .work {
+            border-radius: 2vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .work img {
+            width: 100%;
+            height: 35vh;
+            border-radius: 2vh;
+            cursor: pointer;
+        }
+        
+        .work:hover img {
+            transform: scale(1.1);
+            transition: transform 0.7s;
+        }
+        
+        .layer {
+            height: 0;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+            border-radius: 2vh;
+            position: absolute;
+            overflow: hidden;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-size: smaller;
+        }
+        
+        .work:hover .layer {
+            height: 100%;
+            transition: height 0.7s;
+        }
+        
+        .layer h3 {
+            margin-bottom: 3vh;
+        }
+        
+        .layer a {
+            margin-top: 2vh;
+            text-decoration: none;
+            font-size: medium;
+            background-color: white;
+            background-size: cover;
+            padding: 1vh;
+            border-radius: 45%;
+            text-align: center;
+        }
+        
+        .certificates {
+            margin-top: 20vh;
+            margin-left: 10vh;
+        }
+        
+        .certificate_list {
+            display: flex;
+            gap: 7vh;
+            margin-top: 8vh;
+        }
+        
+        .certificate {
+            background-color: rgb(39, 39, 39);
+            height: 20vh;
+            width: 50.5vh;
+            border-radius: 2vh;
+            padding: 4vh;
+        }
+        
+        .certificate:hover {
+            background-color: red;
+            color: black;
+            transform: scale(1.05);
+            transition: transform 0.5s;
+        }
+        
+        .cer_det {
+            margin-top: 2vh;
+        }
+        
+        .view {
+            margin-top: 2vh;
+            width: 3vh;
+        }
+        
+        .view a {
+            text-decoration: none;
+            color: rgb(255, 255, 93);
+        }
+        
+        .contact {
+            margin-top: 20vh;
+            margin-left: 10vh;
+            display: flex;
+            flex-direction: row;
+            gap: 20vh;
+        }
+        
+        .leftcontact {
+            width: 40%;
+        }
+        
+        .leftcontact h1 {
+            font-size: 6vh;
+        }
+        
+        .gmail_ph {
+            margin-top: 8vh;
+        }
+        
+        .icons {
+            margin: 3vh;
+            display: flex;
+            flex-direction: row;
+            gap: 1.5vh;
+            margin-top: 4vh;
+        }
+        
+        .icon {
+            cursor: pointer;
+        }
+        
+        .cv {
+            margin-top: 4vh;
+        }
+        
+        .cv button {
+            padding: 2vh;
+            width: 25vh;
+            font-size: medium;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 0.7vh;
+            cursor: pointer;
+        }
+        
+        .cv button a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .cv button:hover {
+            background-color: rgb(184, 0, 0);
+        }
+        
+        .rightcontact {
+            width: 100%;
+            margin-right: 10vh;
+        }
+        
+        .rightcontact form {
+            width: 100%;
+            margin-right: 10vh;
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+        }
+        
+        .rightcontact form input {
+            width: 100%;
+        }
+        
+        .enter1,
+        .enter2 {
+            border: none;
+            background-color: rgb(39, 39, 39);
+            color: white;
+            padding: 1vh;
+            height: 4vh;
+            border-radius: 1vh;
+            font-size: medium;
+        }
+        
+        .enter3 {
+            border: none;
+            background-color: rgb(39, 39, 39);
+            color: white;
+            padding: 1vh;
+            height: 15vh;
+            border-radius: 1vh;
+            font-size: medium;
+            width: 100%;
+            font-size: large;
+        }
+        
+        #submit {
+            width: 20vh;
+            background-color: red;
+            color: white;
+            padding: 2vh;
+            font-size: medium;
+            cursor: pointer;
+            border-radius: 1vh;
+            border: none;
+            margin-top: 2vh;
+        }
+        
+        #submit:hover {
+            background-color: rgb(184, 0, 0);
+        }
+        
+        .foot {
+            height: 8vh;
+            background-color: rgb(20, 20, 20);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .top {
+            margin-top: 10vh;
+            display: flex;
+            justify-content: end;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel">
+        <div class="left">
+            <span id="firstpart">Ra</span><span id="secondpart">ktim</span>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="#h">Home</a></li>
+                <li><a href="#ab">About</a></li>
+                <li><a href="#wo">Works</a></li>
+                <li><a href="#ce">Certificates</a></li>
+                <li><a href="#co">Contacts</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="home" id="h">
+        <div class="leftside">
+            <span class="intro"><span>Hi! My name is </span><span id="name">Raktim Mondal.</span><span> I am a Software and Web developer.</span></span>
+        </div>
+        <div class="rightside">
+            <img src="https://png.pngtree.com/png-vector/20231014/ourmid/pngtree-3d-illustration-web-development-concept-programming-and-coding-png-image_10160704.png" alt="">
+        </div>
+    </div>
+    <div class="aboutme" id="ab">
+        <div class="mine">
+            <img src="https://avatars.githubusercontent.com/u/192696255?v=4" alt="">
+        </div>
+        <div class="details_aboutme">
+            <h1>About Me</h1>
+            <div class="firstline_aboutme">
+                <p>Aspiring Software and Web Developer specializing in building high-performance, scalable web applications using modern technologies. Adept at crafting seamless, intuitive user experiences through clean, efficient, and maintainable code.
+                    Strong problem-solving skills with a passion for leveraging technology to extract actionable insights and deliver impactful solutions. Committed to continuous learning and applying best practices to drive innovation and efficiency
+                    in web development</p>
+            </div>
+            <div class="lists_aboutme">
+                <ul>
+                    <li id="skills">Skills</li>
+                    <li id="education">Education</li>
+                    <li id="expeirence">Experiences</li>
+                    <li id="strength">Strengths</li>
+                </ul>
+            </div>
+            <div class="det_list_aboutme"></div>
+        </div>
+    </div>
+    <div class="works" id="wo">
+        <div class="heading">
+            <h1>My Work</h1>
+        </div>
+        <div class="worklist">
+            <div class="work">
+                <img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2025/03/Building-a-Medical-Prescription-Scanner-using-PaliGemma-2-Mix-.webp" alt="">
+                <div class="layer">
+                    <h3>Handwritten Prescription recognition using OCR</h3>
+                    <p>It extracts the handwritten text from medical prescription using Optical Character Recognition. A deep learning aproach named ViT Model is used here, which its success is acchived by an accuracy of 79%.</p>
+                    <a href="https://drive.google.com/drive/folders/10EIRyJ5heo-Jif3IzTNfJuLHqmwv3Fyz?usp=sharing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 3vh; width: 3vh;"><path fill="purple" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="https://i.ytimg.com/vi/FoD33gwhu00/maxresdefault.jpg" alt="">
+                <div class="layer">
+                    <h3>Clone of Netflix</h3>
+                    <p>It represents the UI clone of Netflix which was made using HTML, CSS,and JavaScript. </p>
+                    <a href="https://dulcet-horse-be7aa3.netlify.app/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 3vh; width: 3vh;"><path fill="purple" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="https://miro.medium.com/v2/resize:fit:3840/1*_2XYF5tqnY380isOiuU8lQ.jpeg" alt="">
+                <div class="layer">
+                    <h3>Clone of Amazon Prime Video</h3>
+                    <p>It represents the UI clone of Amazon Prime which was made using HTML, CSS,and JavaScript. </p>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 3vh; width: 3vh;"><path fill="purple" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="certificates" id="ce">
+        <div class="heading">
+            <h1>Certifications</h1>
+        </div>
+        <div class="certificate_list">
+            <div class="certificate">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" style="height: 7vh; width: 7vh"><path fill="#ffffff" d="M277.7 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1zm-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296 53.2 242.8 0 242.8 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2zm114.6-176.2c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3zm-6.1 270.5a12.2 12.2 0 0 1 -2 2.6c128.3-33.7 81.1-118.9 19.8-97.3a17.3 17.3 0 0 0 -8.2 6.3 70.5 70.5 0 0 1 11-3c31-6.5 75.5 41.5-20.6 91.4zM348 437.4s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6 .7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.8 509.4 401 461.3 348 437.4zM124.4 396c-78.7 22 47.9 67.4 148.1 24.5a185.9 185.9 0 0 1 -28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2zm179.8 97.2c-78.7 14.8-175.8 13.1-233.3 3.6 0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7zM260.6 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9a60.4 60.4 0 0 1 -21.1-12.8z"/></svg>
+                <div class="cer_det">
+                    <h3>Java Programing</h3>
+                    <div class="view">
+                        <a href="https://drive.google.com/file/d/1d0I2C2blH8YNILcZ-4Z11BHisQoaDXMM/view?usp=sharing">
+                            <p>View</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style="height:7vh; width:7vh;"><path fill="#ffffff" d="M64 96c0-35.3 28.7-64 64-64l384 0c35.3 0 64 28.7 64 64l0 256-64 0 0-256L128 96l0 256-64 0L64 96zM0 403.2C0 392.6 8.6 384 19.2 384l601.6 0c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8L76.8 480C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg>
+                <div class="cer_det">
+                    <h3>Web Development</h3>
+                    <div class="view">
+                        <a href="https://drive.google.com/file/d/1_1q1jfguymAy5baP2ev4cYuk4RV1vdNe/view?usp=sharing">
+                            <p>View</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style="height:7vh; width:7vh;"><path fill="#ffffff" d="M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z"/></svg>
+                <div class="cer_det">
+                    <h3>Google AI-ML</h3>
+                    <div class="view">
+                        <a href="https://drive.google.com/file/d/1lywtb2wCBez6nEOh4gVJobD7Wc9i7Soa/view?usp=sharing">
+                            <p>View</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact" id="co">
+        <div class="leftcontact">
+            <h1>Contact Me</h1>
+            <div class="gmail_ph">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:2vh; width:2vh"><path fill="#ff0000" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg><span>raktimrik.mondal13@gmail.com</span>
+                <br><br>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:2vh; width:2vh"><path fill="#ff0000" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg><span>+91-9040430712</span>
+            </div>
+            <div class="icons">
+                <a href="https://www.instagram.com/_raktim_mondal/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height:3vh; width:3vh" class="icon"><path fill="#ffffff" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+                <a href="https://www.linkedin.com/in/raktim-mondal-6b3a85248/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height:3vh; width:3vh" class="icon"><path fill="#ffffff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                <a href="https://github.com/raktim-mondal25"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" style="height:3vh; width:3vh" class="icon"><path fill="#ffffff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+            </div>
+            <div class="cv">
+                <button><a href="https://drive.google.com/file/d/1aadXiNV0UepWCHFKkVTUz5r7n1Ly4XZY/view?usp=drive_link">View Resume</a></button>
+            </div>
+        </div>
+        <div class="rightcontact">
+            <form name="submit-to-google-sheet">
+                <input class="enter1" name="Name" type="text" placeholder="Your Name" required>
+                <input class="enter2" name="Email" type="email" placeholder="Your Email" required>
+                <textarea class="enter3" name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button id="submit">Submit</button>
+                <p id="msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="top">
+        <a href="#h">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height: 3vh; width: 3vh"><path fill="#ffffff" d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/></svg>
+        </a>
+    </div>
+
+    <div class="foot">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height: 2vh; width: 2vh"><path fill="#ffffff" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM199.4 312.6c-31.2-31.2-31.2-81.9 0-113.1s81.9-31.2 113.1 0c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9c-50-50-131-50-181 0s-50 131 0 181s131 50 181 0c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0c-31.2 31.2-81.9 31.2-113.1 0z"/></svg>
+        <span>2025 Raktim Mondal. All rights reserved.</span>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        const intro = document.querySelector(".intro");
+
+        const textParts = [
+            "Hi! My name is ",
+            "<span id='name'>Raktim Mondal</span>",
+            ". I am a Software and Web developer."
+        ];
+
+        const fullText = textParts.join('');
+        let ind = 0;
+        let temp = "";
+
+        (function type() {
+            if (ind < fullText.length) {
+                temp += fullText.charAt(ind);
+
+                // Use innerHTML *after* building the safe temp string
+                intro.innerHTML = temp;
+                ind++;
+                setTimeout(type, 50);
+            }
+        })();
+
+
+        const skill = document.querySelector("#skills");
+        const edu = document.querySelector("#education");
+        const exp = document.querySelector("#expeirence");
+        const str = document.querySelector("#strength");
+        const dis = document.querySelector(".det_list_aboutme");
+
+
+        skill.addEventListener("click", () => {
+            dis.innerHTML = '<p style="color:red">Coding Languages</p><p style="color:white">Java, C, Python, JavaScript</p><br><p style="color:red">Software Development</p><p style="white">Data Structure and Algorithms, Object Oriented and Programming</p><br><p style="color:red">Web Development</p><span style="color:#B31B1B">Frontend - </span><span>   HTML, CSS, JavaScript, React</span><br><span style="color: #B31B1B">Backend - </span><span style="color: white">   MySQL</span><br><br><p style="color:red">Tools & Libraries</p><span style="color: white">Git, GitHub, VS Code, TenserFlow</span>';
+        });
+
+
+        edu.addEventListener("click", () => {
+            dis.innerHTML = '<span style="color: red">Higher Secondary</span><br><span style="color:white">St. Partick`s Higher Secondary School, Asansol</span><span style="color:#B31B1B">(2021-2022)</span><br><br><br><span style="color:red">Bachelor of Technology, Computer Science and Engineering</span><br><span style="color=white">Kalinga Institute of Industrial Technology, Bhubaneshwar</span><span style="color:#B31B1B">(2022-2026)</span>';
+        });
+
+
+        exp.addEventListener("click", () => {
+            dis.innerHTML = '<span style="color:red">Pyhton Full Stack Web Developer</span><br><span style="color:white">Knowledge in Pyhton, HTML, CSS, JavaScript, React, and MySql. Specialized in frontend development of efficeint systems and created seamless font-end expirences for optimal user interaction</span><span style="color:#B31B1B">(2024)<span>';
+        });
+
+
+        str.addEventListener("click", () => {
+            dis.innerHTML = '<span style="color:red">Continous Learner</span><br><span style="color:white">Committed to continous learning and applying best practices</span><br><br><span style="color:#B31B1B">Problem Solver</span><br><span style="color:white">Strong problem-solving skills with a passion for  leveraging technology</span>';
+        });
+
+
+
+
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxFfCiKcZfuq-ZP4V9yfZl0nKjaK9utTM7p9DA92bnVTFY-AoYHfzYm6WBTfJCKaV66/exec';
+        const form = document.forms['submit-to-google-sheet'];
+        const msg = document.querySelector("#msg");
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then((response) => {
+                    msg.innerHTML = "Message sent successfully";
+                    setTimeout(() => {
+                        msg.innerHTML = "";
+                    }, 5000);
+                    form.reset();
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+
+</body>
+
+</html>
